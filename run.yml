@@ -1,0 +1,9 @@
+---
+- name: Run
+  hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: Install Kubernetes
+    include_role: 
+      name: install_kubernetes
