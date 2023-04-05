@@ -1,7 +1,9 @@
 ---
 - name: alias kubectl
   lineinfile:
-    path: '{{ lookup("env", "HOME") }}/.bashrc'
+    #path: '{{ lookup("env", "HOME") }}/.bashrc'
+    path: '~/.bashrc'
     regexp: '^alias kubectl='
     line: 'alias kubectl="microk8s kubectl"'
     state: present
+    

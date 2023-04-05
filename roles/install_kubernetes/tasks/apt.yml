@@ -1,16 +1,8 @@
 ---
 - name: apt
   apt:
-    name: "{{ packages }}"
+    name: "{{ apt }}"
     update_cache: true
     cache_valid_time: 86400
     state: present
   become: true
-  vars:
-    packages:
-    - snapd
-#    - apt-transport-https
-#    - ca-certificates
-#    - curl
-#    - gnupg-agent
-    ansible_become_password: "{{ ansible_ssh_pass }}"

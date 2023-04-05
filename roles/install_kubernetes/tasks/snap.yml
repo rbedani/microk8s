@@ -1,11 +1,7 @@
 ---
 - name: snap
   snap:
-    name: "{{ deploy }}"
+    name: "{{ snapd }}"
     state: present
     classic: yes
   become: true
-  vars:
-    deploy:
-    - microk8s
-    ansible_become_password: "{{ ansible_ssh_pass }}"
