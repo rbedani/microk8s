@@ -1,7 +1,0 @@
----
-- name: Create .kube folder
-  file:
-    path: "{{ item }}"
-    state: directory
-  loop:
-    - '{{ lookup("env", "HOME") }}/.kube'

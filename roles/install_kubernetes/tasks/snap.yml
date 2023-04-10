@@ -1,7 +1,0 @@
----
-- name: snap
-  snap:
-    name: "{{ snapd }}"
-    state: present
-    classic: yes
-  become: true

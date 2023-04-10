@@ -1,6 +1,0 @@
----
-- name: copy
-  copy:
-    remote_src=True
-    src=/etc/kubernetes/admin.conf
-    dest=/home/vagrant/.kube/config
