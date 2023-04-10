@@ -1,0 +1,14 @@
+---
+- name: alias kubectl
+  lineinfile:
+    path: '~/.bashrc'
+    regexp: '^alias kubectl='
+    line: 'alias kubectl="microk8s kubectl"'
+    state: present
+
+- name: alias helm
+  lineinfile:
+    path: '~/.bashrc'
+    regexp: '^alias helm='
+    line: 'alias helm="microk8s helm3"'
+    state: present

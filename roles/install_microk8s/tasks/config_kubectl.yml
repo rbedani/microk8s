@@ -1,0 +1,38 @@
+---
+- name: Create .kube folder for the user
+  become: true
+  become_user: '{{ user }}'
+  file:
+    path: ~/.kube
+    state: directory
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: 0750
+  with_items: '{{ users }}'
+  loop_control:
+    loop_var: user
+    label: '{{ user }}'
+
+- name: create kubectl config
+  become: true
+  changed_when: true
+  shell: microk8s config > /home/{{ user }}/.kube/config
+  args:
+    executable: /bin/bash
+  with_items: '{{ users }}'
+  loop_control:
+    loop_var: user
+    label: '{{ user }}'
+
+- name: reaffirm permission on files
+  become: true
+  file:
+    path: ~/.kube
+    state: directory
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    recurse: yes
+  with_items: '{{ users }}'
+  loop_control:
+    loop_var: user
+    label: '{{ user }}'

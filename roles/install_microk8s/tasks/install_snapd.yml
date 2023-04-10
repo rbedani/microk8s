@@ -1,0 +1,26 @@
+---
+- name: Install Snapd
+  apt:
+    name:
+      - snapd
+    update_cache: true
+    cache_valid_time: 86400
+    state: present
+  become: true
+  when:
+    ( ansible_facts['distribution'] == "Ubuntu" ) or
+    ( ansible_facts['distribution'] == "Debian" )
+
+- name: Install Snapd on RedHat or compatible
+  yum:
+    name:
+      - epel-release
+      - snapd
+    update_cache: true
+    cache_valid_time: 86400
+    state: present
+  become: true
+  when:
+    ( ansible_facts['distribution'] == "RedHat" ) or
+    ( ansible_facts['distribution'] == "CentOS" ) or
+    ( ansible_facts['distribution'] == "Fedora" )
