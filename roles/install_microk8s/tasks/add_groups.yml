@@ -1,7 +1,8 @@
 ---
 - name: microk8s group
   user:
-    name: '{{ lookup("env", "USER") }}'
+    #name: '{{ lookup("env", "USER") }}'
+    name: '{{ users }}'
     state: present
     groups:
       - microk8s

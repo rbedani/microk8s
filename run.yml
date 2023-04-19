@@ -1,9 +1,19 @@
 ---
 - name: Run
   hosts: all
-#  gather_facts: no
-  
+
   tasks:
-  - name: Install Kubernetes
+  - name: Remove all previuos instances MicroK8S
+    include_role: 
+      name: remove_microk8s
+    when: remove | default(False)
+
+  - name: Install MicroK8S
     include_role: 
       name: install_microk8s
+    when: install | default(False)
+
+  - name: Test
+    include_role: 
+      name: test
+    when: cloudflare | default(False)

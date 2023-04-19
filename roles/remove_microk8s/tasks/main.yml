@@ -1,0 +1,21 @@
+---
+- name: Stop micrko8s
+  include_tasks: microk8s_stop.yml
+
+- name: Remove micrko8s
+  include_tasks: remove_microk8s.yml
+
+- name: Remove snapd
+  include_tasks: remove_snapd.yml
+
+- name: Remove kubectl
+  include_tasks: remove_kubectl.yml
+
+- name: Remove hosts
+  include_tasks: remove_hosts.yml
+
+- name: Remove group
+  include_tasks: remove_groups.yml
+
+- name: Remove alias
+  include_tasks: remove_alias.yml

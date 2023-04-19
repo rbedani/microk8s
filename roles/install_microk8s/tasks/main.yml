@@ -1,35 +1,39 @@
 ---
-- name: step 01/ install
+- name: install snapd
   include_tasks: install_snapd.yml
 
-- name: step 02/ install
+- name: install snap microk8s
   include_tasks: install_microk8s.yml
 
-- name: step 03/ install
+- name: add groups
   include_tasks: add_groups.yml
 
-- name: step 04/ install
+- name: add alias
   include_tasks: add_alias.yml
 
-- name: step 05/ config
+- name: config kubectl client
   include_tasks: config_kubectl.yml
   when: "users is defined and users not in ([], None, '', omit)"
 
-- name: step 06/ repos
-  include_tasks: config_repo_helm.yml
-  when: "users is defined and users not in ([], None, '', omit)"
-
-- name: step 07/ install certificates ssl
+- name: install certificates ssl
   include_tasks: microk8s_certificates.yml
 
-- name: step 08/ configure single node addons
-  include_tasks: microk8s_addons.yml
-  when: not microk8s_enable_HA
-
-- name: step 09/ configure High Availability
+- name: configure High Availability
   include_tasks: microk8s_configure-HA.yml
   when: "microk8s_enable_HA"
 
-- name: step 10/ configure workers
+- name: configure workers
   include_tasks: microk8s_configure_workers.yml
   when: "groups[microk8s_group_WORKERS] is defined and groups[microk8s_group_WORKERS]|length>0"
+
+- name: install microk8s addons
+  include_tasks: microk8s_addons.yml
+  when: not microk8s_enable_HA
+
+- name: config microk8s addons helm3
+  include_tasks: microk8s_helm.yml
+  when: "users is defined and users not in ([], None, '', omit)"
+
+- name: Export config from cluster for Ansible-Kubectl
+  include_tasks: microk8s_export_config.yml
+  when: "export_config_kubectl and export_config_kubectl_dest not in ([], None, '', omit)"

@@ -1,0 +1,7 @@
+---
+- name: Clear hosts between "# BEGIN" y "# END" in the file /etc/hosts
+  become: true
+  replace:
+    path: /etc/hosts
+    regexp: "(?ms)^# BEGIN ANSIBLE MANAGED: microk8s HA Cluster Hosts.*?# END ANSIBLE MANAGED: microk8s HA Cluster Hosts\n?"
+    replace: ""

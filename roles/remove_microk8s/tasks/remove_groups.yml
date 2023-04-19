@@ -1,0 +1,8 @@
+---
+- name: microk8s group
+  group:
+    #name: '{{ lookup("env", "USER") }}'
+    name: microk8s
+    state: absent
+  become: true
+  

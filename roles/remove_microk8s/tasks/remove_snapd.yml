@@ -1,0 +1,21 @@
+---
+- name: Clear snapd components
+  apt:
+    name:
+      - snapd
+    state: absent
+  become: true
+  when:
+    ( ansible_facts['distribution'] == "Ubuntu" ) or
+    ( ansible_facts['distribution'] == "Debian" )
+
+- name: Clear snapd components on RedHat or compatible
+  yum:
+    name:
+      - snapd
+    state: absent
+  become: true
+  when:
+    ( ansible_facts['distribution'] == "RedHat" ) or
+    ( ansible_facts['distribution'] == "CentOS" ) or
+    ( ansible_facts['distribution'] == "Fedora" )

@@ -1,0 +1,14 @@
+---
+#
+# defaults file for remove_microk8s
+#
+
+# password for elevate privileges
+ansible_become_password: "{{ ansible_ssh_pass }}"
+
+# users to make members of microk8s group
+users: '{{ ansible_user }}'
+
+# option to export config client kubectl (./kube/config) from master-nodes to my ansible localhost
+export_config_kubectl: true
+export_config_kubectl_dest: "/home/ansible/.kube/"

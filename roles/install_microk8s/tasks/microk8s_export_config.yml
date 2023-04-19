@@ -1,0 +1,9 @@
+---
+- name: download config kubectl and put on ansible machine
+  fetch:
+    src: "/home/{{ users }}/.kube/config"
+    dest: "{{ kubectl_config_file_dest }}"
+    flat: yes
+    fail_on_missing: yes
+    validate_certs: no
+

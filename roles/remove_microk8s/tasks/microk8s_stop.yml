@@ -1,0 +1,5 @@
+---
+- name: find all instances microk8s
+  shell: microk8s stop
+  become: true
+  ignore_errors: true
