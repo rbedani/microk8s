@@ -15,4 +15,4 @@
   file:
     path: "{{ export_config_kubectl_dest }}"
     state: absent
-  when: export_config_kubectl
+  when: "export_config_kubectl and export_config_kubectl_dest not in ([], None, '', omit)"
