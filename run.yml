@@ -13,7 +13,10 @@
       name: install_microk8s
     when: install | default(False)
 
-  - name: Test
-    include_role: 
-      name: test
-    when: cloudflare | default(False)
+  - name: Apply
+    import_tasks: tasks/apply.yml
+    when: apply | default(False)
+
+  - name: Delete
+    import_tasks: tasks/delete.yml
+    when: delete | default(False)

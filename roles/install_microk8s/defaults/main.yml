@@ -25,10 +25,10 @@ microk8s_group_WORKERS: []
 add_workers_to_hostfile: false
 
 # option to export config client kubectl (./kube/config) from master-nodes to my ansible localhost
-export_config_kubectl: false
+export_config_kubectl: true
 
 # location for directory for ansible-kubectl Example: "/home/admin/.kube" or [] for ignore
-export_config_kubectl_dest: []
+export_config_kubectl_dest: "/home/ansible/.kube/"
 
 # option for rename with config kubectl. Example: "/home/admin/.kube/config_server1"
 kubectl_config_file_dest: "{{ export_config_kubectl_dest }}config_{{ inventory_hostname }}"
@@ -39,13 +39,13 @@ registry_size: 20Gi
 ip_addres_pool: 172.30.126.200-172.30.126.206
 microk8s_plugins:
   dns: "{{ microk8s_dns_resolvers }}"     # CoreDNS
-  host-access: false                       # Allow Pods connecting to Host services smoothly
+  host-access: false                      # Allow Pods connecting to Host services smoothly
   ingress: true                           # Ingress controller for external access
-  metrics-server: true                   # K8s Metrics Server for API access to service metrics
-  rbac: true                             # Role-Based Access Control for authorisation
+  metrics-server: true                    # K8s Metrics Server for API access to service metrics
+  rbac: true                              # Role-Based Access Control for authorisation
   storage: true                           # Storage class; allocates storage from host directory
   registry: "size={{ registry_size }}"    # Private image registry exposed on localhost:32000
-  dashboard: true                        # The Kubernetes dashboard
+  dashboard: true                         # The Kubernetes dashboard
   ambassador: false                       # Ambassador API Gateway and Ingress
   cilium: false                           # SDN, fast with full network policy
   fluentd: false                          # Elasticsearch-Fluentd-Kibana logging and monitoring

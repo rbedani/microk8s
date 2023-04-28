@@ -10,7 +10,7 @@ ansible_become_password: "{{ ansible_ssh_pass }}"
 users: '{{ ansible_user }}'
 
 # option to export config client kubectl (./kube/config) from master-nodes to my ansible localhost
-export_config_kubectl: false
+export_config_kubectl: true
 
 # location for directory with config file of kubectl. Example: "/home/admin/.kube/"
-export_config_kubectl_dest: []
+export_config_kubectl_dest: "/home/ansible/.kube/"

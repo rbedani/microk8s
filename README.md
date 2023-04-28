@@ -66,6 +66,7 @@ Los addons deben ajustarse al criterio del proyecto.
 Important:
 Es importante especificar el grupo de Workers y Nodos Master.
 
+
 About:
 Se ha probado sobre entornos de laboratorio.
 2 VM - Ubuntu 22.04 LTS
