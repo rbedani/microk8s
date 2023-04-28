@@ -1,0 +1,9 @@
+- name: Copy manifest to server
+  copy:
+    src: files/hello-app.yml
+    dest: /tmp/hello-app.yml
+
+- name: Delete deployments
+  command: microk8s kubectl delete -f /tmp/hello-app.yml
+  failed_when: false
+  ignore_errors: true
