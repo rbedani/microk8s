@@ -1,3 +1,8 @@
+---
+05/05/2023
+add function for apply and delete deployments
+add funciion for arguments file manifest that kubernetes
+
 Playbook for deploy Cluster of Kubernetes
 ---
 19/04/2023
@@ -25,7 +30,7 @@ Proximo Change: Cloudfire
 ---
 10/04/2023 - Update 19/04/2023
 Instalación de Microk8s
-
+```shell
 ├── roles
 │   ├── install_microk8s
 │   │   ├── defaults
@@ -56,7 +61,7 @@ Instalación de Microk8s
 │   │       ├── remove_microk8s.yml
 │   │       └── remove_snapd.yml
 └── run.yml
-
+```
 defaults:
 Contiene la plantilla de las variables globales para realizar la instalación de microk8s.
 Para elevación de permisos verificar la variable de ansible_become_password.

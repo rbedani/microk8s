@@ -13,10 +13,30 @@
       name: install_microk8s
     when: install | default(False)
 
-  - name: Apply
-    import_tasks: tasks/apply.yml
+  ### MicroServices KS8 ### APPLY
+
+  - name: Copy file
+    import_tasks: tasks/copy_manifest_to_server.yml
+    when: apply | default(False)
+  
+  - name: Kubectl command
+    import_tasks: tasks/kubectl_apply.yml
     when: apply | default(False)
 
-  - name: Delete
-    import_tasks: tasks/delete.yml
+  - name: Delete file
+    import_tasks: tasks/delete_manifest_from_server.yml
+    when: apply | default(False)
+
+  ### MicroServices K8S ### DELETE
+
+  - name: Copy file
+    import_tasks: tasks/copy_manifest_to_server.yml
+    when: delete | default(False)
+
+  - name: Kubectl command
+    import_tasks: tasks/kubectl_delete.yml
+    when: delete | default(False)
+
+  - name: Delete file
+    import_tasks: tasks/delete_manifest_from_server.yml
     when: delete | default(False)

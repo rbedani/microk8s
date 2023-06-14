@@ -19,13 +19,16 @@ microk8s_group_HA: "cluster"
 microk8s_ip_regex_HA: "([0-9]{1,3}[\\.]){3}[0-9]{1,3}"
 
 # hostgroup whose members will act as worker nodes only (no control-plane components run here)
-microk8s_group_WORKERS: []
+microk8s_group_WORKERS: "workers"
 
 # option to add workers hostgroup memembers to hostfile
 add_workers_to_hostfile: false
 
 # option to export config client kubectl (./kube/config) from master-nodes to my ansible localhost
 export_config_kubectl: true
+
+# option to create symbolic link to config client kubectl (./kube/config) from master-nodes to my ansible localhost
+link_symbolic_config_kubectl: true
 
 # location for directory for ansible-kubectl Example: "/home/admin/.kube" or [] for ignore
 export_config_kubectl_dest: "/home/ansible/.kube/"
@@ -39,7 +42,7 @@ registry_size: 20Gi
 ip_addres_pool: 172.30.126.200-172.30.126.206
 microk8s_plugins:
   dns: "{{ microk8s_dns_resolvers }}"     # CoreDNS
-  host-access: false                      # Allow Pods connecting to Host services smoothly
+  host-access: true                       # Allow Pods connecting to Host services smoothly
   ingress: true                           # Ingress controller for external access
   metrics-server: true                    # K8s Metrics Server for API access to service metrics
   rbac: true                              # Role-Based Access Control for authorisation

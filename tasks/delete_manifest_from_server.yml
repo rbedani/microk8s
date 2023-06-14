@@ -1,0 +1,4 @@
+- name: delete manifest from server
+  file:
+    path: "/tmp/{{ file }}"
+    state: absent

@@ -1,0 +1,4 @@
+- name: Apply manifest to MicroK8S
+  until: result is succeeded
+  command: microk8s kubectl apply -f "/tmp/{{ file }}"
+  register: result

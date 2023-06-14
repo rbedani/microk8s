@@ -14,3 +14,6 @@ export_config_kubectl: true
 
 # location for directory with config file of kubectl. Example: "/home/admin/.kube/"
 export_config_kubectl_dest: "/home/ansible/.kube/"
+
+# reboot hosts when finished remove
+reboot: true

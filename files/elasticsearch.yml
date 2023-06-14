@@ -1,14 +1,9 @@
-apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: Elasticsearch
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
 metadata:
-  name: elasticsearch
+  name: quickstart
 spec:
-  version: 7.15.2
-  nodeSets:
-  - name: default
-    count: 1
-    config:
-      node.master: true
-      node.data: true
-      node.ingest: true
-      xpack.license.self_generated.type: basic
+  version: 8.7.1
+  count: 1
+  elasticsearchRef:
+    name: quickstart

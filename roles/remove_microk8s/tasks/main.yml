@@ -1,6 +1,6 @@
 ---
 - name: Stop micrko8s
-  include_tasks: microk8s_stop.yml
+  include_tasks: remove_microk8s_stop.yml
 
 - name: Remove micrko8s
   include_tasks: remove_microk8s.yml
@@ -19,3 +19,7 @@
 
 - name: Remove alias
   include_tasks: remove_alias.yml
+
+- name: Reboot hosts
+  include_tasks: remove_reboot_hosts.yml
+  when: "reboot"

@@ -1,0 +1,4 @@
+- name: copy manifest to server
+  copy:
+    src: "files/{{ file }}"
+    dest: "/tmp/{{ file }}"

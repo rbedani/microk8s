@@ -7,3 +7,14 @@
     fail_on_missing: yes
     validate_certs: no
 
+- name: Create link symbolic
+  delegate_to: localhost
+  register: result
+  file:
+    src: "{{ kubectl_config_file_dest }}"
+    dest: /home/ansible/.kube/config
+    state: link
+    force: true
+  failed_when: false
+  ignore_errors: true
+  when: link_symbolic_config_kubectl
